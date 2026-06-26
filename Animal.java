@@ -77,6 +77,9 @@ public abstract class Animal {
         healthStatus = newStatus;       
         // TODO M1: Validate newStatus and update the field
     }
+    public void setIsland(String newIsland){
+        island = newIsland;
+    }
 
     /**
      * Returns the animal type: "Bird", "Reptile", or "Marine".

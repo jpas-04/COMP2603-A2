@@ -87,5 +87,8 @@ public class SanctuaryGUI extends JFrame {
      */
     public static void main(String[] args) {
         // TODO M12: Create Sanctuary, add animals, create GUI, wire model, show
+        Bird b = new Bird("Scarlet Ibis", "Ruby",
+"Trinidad", 0.35, "Healthy", 60.0, true);
+System.out.println(b);
     }
 }
