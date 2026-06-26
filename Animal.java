@@ -5,13 +5,22 @@ import java.util.ArrayList;
  */
 public abstract class Animal {
     // TODO M1: Declare static nextId field, starting at 1
+    private static int nextId = 1;
 
     // TODO M1: Declare private fields:
-    //   animalId (int), species (String), nickname (String),
-    //   island (String), weightKg (double), healthStatus (String)
+        private int animalId;
 
+        private String species,
+                       nickname,
+                       healthStatus,
+                       island;
+
+        private double weightKg;
+        
+                       
     // TODO M4: Declare private ArrayList<String> sightings field
 
+    
     /**
      * Constructor: assigns auto-incremented ID, validates all parameters.
      * Species, nickname, island must not be null or empty.
@@ -19,17 +28,43 @@ public abstract class Animal {
      * healthStatus must be "Healthy", "Injured", or "Critical".
      *
      * TODO M1: Implement constructor with validation
+     * 
      * TODO M4: Initialize sightings list
      */
     public Animal(String species, String nickname, String island, double weightKg, String healthStatus) {
         // TODO M1: Validate parameters and assign fields
+        this.species = species;
+        this.nickname = nickname;
+        this.island = island;
+        this.weightKg = weightKg;
+        this.healthStatus = healthStatus;
         // TODO M1: Auto-assign animalId from nextId, then increment nextId
+        animalId = nextId;
+        nextId+=1;
         // TODO M4: Initialize sightings ArrayList
+        // ArrayList<> sightings;
     }
 
     // TODO M1: Write getters for all fields (getAnimalId, getSpecies, getNickname,
     //          getIsland, getWeightKg, getHealthStatus)
-
+    public String getIsland(){
+        return island;
+    }
+    public int getAnimalId(){
+        return animalId;
+    }
+    public String getSpecies(){
+        return species;
+    }
+    public double getWeightKg(){
+        return weightKg;
+    }
+    public String getNickname(){
+        return nickname;
+    }
+    public String getHealthStatus(){
+        return healthStatus;
+    }
     // TODO M2: Write setIsland(String island) method
 
     // TODO M4: Write getSightings() getter that returns the ArrayList<String>
@@ -39,6 +74,7 @@ public abstract class Animal {
      * TODO M1: Implement updateHealth
      */
     public void updateHealth(String newStatus) {
+        healthStatus = newStatus;       
         // TODO M1: Validate newStatus and update the field
     }
 
@@ -62,8 +98,9 @@ public abstract class Animal {
      */
     @Override
     public String toString() {
-        // TODO M1: Return formatted string
-        return "";
+        
+        return String.format("#%03d %s '%s' (%s) [%s] %.2fkg - %s", 
+        getAnimalId(),getSpecies(),getNickname(),getIsland(),getType(),getWeightKg(),getHealthStatus());
     }
 
     /**
