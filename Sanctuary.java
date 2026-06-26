@@ -6,16 +6,34 @@ import java.util.ArrayList;
 public class Sanctuary {
     // TODO M5: Declare private fields: name (String), island (String),
     //          capacity (int), animals (ArrayList<Animal>)
-
+    private String name;
+    private String island;
+    private int capacity;
+    private ArrayList<Animal> animals;
     /**
      * TODO M5: Implement constructor
      */
     public Sanctuary(String name, String island, int capacity) {
         // TODO M5: Initialize all fields, create empty ArrayList
+        this.name = name;
+        this.island = island;
+        this.capacity = capacity;
+        animals = new ArrayList<>();
     }
 
     // TODO M5: Write getters for name, island, capacity, and animals
-
+    public String getName(){
+        return name;
+    }
+    public String getIsland(){
+        return island;
+    }
+    public int getCapacity(){
+        return capacity;
+    }
+    public ArrayList<Animal> getAnimals(){
+        return animals;
+    }
     /**
      * Adds an animal to this sanctuary.
      * Rejects null animals, rejects if at capacity, rejects if animal's island
@@ -24,8 +42,10 @@ public class Sanctuary {
      * TODO M5: Implement addAnimal
      */
     public boolean addAnimal(Animal a) {
-        // TODO M5: Validate and add
+        if (a.equals(null) || getAnimals().size() == capacity || a.getIsland() != island)
         return false;
+        animals.add(a);
+        return true;
     }
 
     /**
@@ -35,6 +55,11 @@ public class Sanctuary {
      */
     public Animal removeAnimal(int animalId) {
         // TODO M5: Find by ID, remove, and return
+        for(Animal a : animals){
+            if(a.getAnimalId() == animalId){
+                animals.remove(a);
+            }
+        }
         return null;
     }
 
@@ -43,7 +68,12 @@ public class Sanctuary {
      */
     public int getAnimalCount() {
         // TODO M5
-        return 0;
+        return animals.size();
+    }
+
+    public void printRoster(){
+        for(Animal a : animals)
+            System.out.println(a);
     }
 
     /**
@@ -105,9 +135,6 @@ public class Sanctuary {
      *
      * TODO M5: Implement printRoster
      */
-    public void printRoster() {
-        // TODO M5: Loop and print
-    }
 
     /**
      * Format: "Name (Island) [count/capacity animals]"
@@ -118,6 +145,7 @@ public class Sanctuary {
     @Override
     public String toString() {
         // TODO M5: Return formatted string
-        return "";
+
+        return String.format("%s (%s) [%s/%s animals]", name, island,getAnimalCount(),capacity);
     }
 }

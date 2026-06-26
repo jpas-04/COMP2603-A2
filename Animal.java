@@ -17,7 +17,7 @@ public abstract class Animal {
 
         private double weightKg;
         
-                       
+        private ArrayList<String> sightings;
     // TODO M4: Declare private ArrayList<String> sightings field
 
     
@@ -41,6 +41,7 @@ public abstract class Animal {
         // TODO M1: Auto-assign animalId from nextId, then increment nextId
         animalId = nextId;
         nextId+=1;
+        sightings = new ArrayList<>();
         // TODO M4: Initialize sightings ArrayList
         // ArrayList<> sightings;
     }
@@ -68,7 +69,9 @@ public abstract class Animal {
     // TODO M2: Write setIsland(String island) method
 
     // TODO M4: Write getSightings() getter that returns the ArrayList<String>
-
+    protected ArrayList<String> getSightings(){
+        return sightings;
+    }
     /**
      * Updates the health status after validation.
      * TODO M1: Implement updateHealth
@@ -114,7 +117,11 @@ public abstract class Animal {
     @Override
     public boolean equals(Object obj) {
         // TODO M5: Implement equality by animalId
-        return false;
+        if(obj instanceof Animal){
+            Animal other = (Animal) obj;
+            return this.animalId == other.animalId;
+        }
+            return false;
     }
 
     /**
@@ -123,6 +130,6 @@ public abstract class Animal {
     @Override
     public int hashCode() {
         // TODO M5: Return hash based on animalId
-        return 0;
+        return Integer.hashCode(animalId);
     }
 }

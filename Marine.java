@@ -4,7 +4,7 @@
  * TODO M2: Make this class extend Animal
  * TODO M3: Make this class implement Trackable and Relocatable
  */
-public class Marine extends Animal/* TODO M2: extends Animal */ /* TODO M3: implements Trackable, Relocatable */ {
+public class Marine extends Animal implements Trackable,Relocatable/* TODO M2: extends Animal */ /* TODO M3: implements Trackable, Relocatable */ {
     // TODO M2: Declare private fields: maxDepthM (double), tankSizeLitres (int)
     private double maxDepthM;
     private int tankSizeLitres;
@@ -45,11 +45,23 @@ public class Marine extends Animal/* TODO M2: extends Animal */ /* TODO M3: impl
 
     // --- Trackable methods ---
     // TODO M4: Implement logSighting(String date, String location)
-
+    @Override
+    public void logSighting(String date, String location) {      
+        String s = date + " at " + location;
+        getSightings().add(s);
+    }
     // TODO M4: Implement getSightingCount()
-
+    @Override
+    public int getSightingCount() {
+        return getSightings().size();
+    }
     // TODO M4: Implement getLastSighting()
-
+    @Override
+    public String getLastSighting() {
+    if(getSightings().isEmpty())
+        return "No Sightings Recorded";
+    return getSightings().get(getSightings().size()-1);
+    }
     // --- Relocatable methods ---
     // TODO M6: Implement canRelocateTo(String targetIsland)
     //          Returns true only if targetIsland is NOT the animal's current island

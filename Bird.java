@@ -4,7 +4,7 @@
  * TODO M2: Make this class extend Animal
  * TODO M3: Make this class implement Trackable and Relocatable
  */
-public class Bird extends Animal /* TODO M2: extends Animal */ /* TODO M3: implements Trackable, Relocatable */ {
+public class Bird extends Animal implements Trackable,Relocatable/* TODO M2: extends Animal */ /* TODO M3: implements Trackable, Relocatable */ {
     // TODO M2: Declare private fields: wingspanCm (double), canFly (boolean)
 
     private double wingspanCm;
@@ -46,13 +46,26 @@ public class Bird extends Animal /* TODO M2: extends Animal */ /* TODO M3: imple
     // --- Trackable methods ---
     // TODO M4: Implement logSighting(String date, String location)
     //          Appends "date at location" to the sightings list
-
+    @Override
+    public void logSighting(String date, String location) {      
+        String s = date + " at " + location;
+        getSightings().add(s);
+    }
     // TODO M4: Implement getSightingCount()
     //          Returns the size of the sightings list
+    @Override
+    public int getSightingCount() {
+        return getSightings().size();
+    }
 
     // TODO M4: Implement getLastSighting()
     //          Returns the last entry, or "No sightings recorded" if empty
-
+    @Override
+    public String getLastSighting() {
+    if(getSightings().isEmpty())
+        return "No Sightings Recorded";
+    return getSightings().get(getSightings().size()-1);
+    }
     // --- Relocatable methods ---
     // TODO M6: Implement canRelocateTo(String targetIsland)
     //          Birds can always be relocated; return true
