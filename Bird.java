@@ -69,10 +69,23 @@ public class Bird extends Animal implements Trackable,Relocatable/* TODO M2: ext
     // --- Relocatable methods ---
     // TODO M6: Implement canRelocateTo(String targetIsland)
     //          Birds can always be relocated; return true
+    
+
+    public boolean canRelocateTo(String targetIsland) {
+        return true;
+    }
 
     // TODO M6: Implement getRelocationCost()
+    @Override
+    public double getRelocationCost() {
+        return 500.0 + getWeightKg() * 100.0;
+    }
     //          Returns 500.0 + weightKg * 100.0
 
     // TODO M6: Implement relocateTo(String island)
     //          Updates the island using setIsland()
+    @Override
+    public void relocateTo(String island) {
+        setIsland(island);
+    }
 }
