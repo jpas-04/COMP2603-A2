@@ -12,7 +12,8 @@ import java.util.ArrayList;
  *   SOUTH:  Status label showing match count
  */
 public class SanctuaryGUI extends JFrame {
-    // TODO M10: Declare private Sanctuary field
+    // TODO M10: Declare private Sanctuary field\
+    private Sanctuary sanctuary;
 
     // TODO M9: Declare GUI components:
     //   JTextField nameField
